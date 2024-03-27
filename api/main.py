@@ -8,8 +8,9 @@ async def ping():
     return f"hello, i'm alive"
 
 @app.post("/predict")
-async def predict(file: UploadFile = File(...)):
-    pass
+async def predict(image_file: UploadFile = File(...)):
+    bytes = await image_file.read()
+    return
 
 if __name__ == "__main__":
     uvicorn.run(
