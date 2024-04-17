@@ -46,30 +46,13 @@ async def predict(image_file: UploadFile = File(...)):
     top_3_indices = np.argpartition(predictions[0][0], -3)[-3:]
     sorted_indices = top_3_indices[np.argsort(predictions[0][0][top_3_indices])][::-1]
 
-    print (class_names)
+    return {
+        class_names[sorted_index]: 
+        format(100*float(predictions[0][0][sorted_index]), ".4f") 
+        for sorted_index in sorted_indices
+    }
 
-    return [
-        [class_names[sorted_index] for sorted_index in sorted_indices], 
-        [format(100*float(predictions[0][0][sorted_index]), ".4f") for sorted_index in sorted_indices]
-    ]
-'''
-    image_bytes = await image_file.read()
-    image = np.array(
-        Image.open(
-            BytesIO(image_bytes)
-        ).resize((224, 224))
-    )
 
-    image_batch = np.expand_dims(image, 0)
-    predictions = trained_model.predict(image_batch)[0]
-
-    top_3_indices = np.argsort(predictions)[-3:][::-1]
-    top_3_probabilities = predictions[top_3_indices]
-    top_3_classes = [class_names[index] for index in top_3_indices]
-
-    return {"predictions": top_3_classes, "probabilities": top_3_probabilities.tolist()}
-    return {class_names[predictions.argmax()]}
-'''
 if __name__ == "__main__":
     uvicorn.run(
         app, 
