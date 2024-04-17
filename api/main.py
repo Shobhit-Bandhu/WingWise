@@ -5,8 +5,9 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 import os
-
-app = FastAPI()
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
+from fastapi.staticfiles import StaticFiles
 
 trained_model = tf.keras.models.load_model("saved_model/trained_model.keras")
 
@@ -20,11 +21,14 @@ with open(filename, "r") as file:
   for line in lines:
     class_names.append(line.rstrip("\n"))
 
-
+app = FastAPI()
+app.mount("/static1", StaticFiles(directory="frontend"), name="static1")
+app.mount("/static2", StaticFiles(directory="frontend/static"), name="static2")
+templates = Jinja2Templates(directory="frontend")
 
 @app.get("/")
-async def home():
-    return "welcum ma fren"
+async def home(request: Request):
+    return templates.TemplateResponse("app.html", {"context": "data", "request": request})
 
 @app.get("/ping")
 async def ping():

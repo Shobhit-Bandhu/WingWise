@@ -63,7 +63,7 @@
 
 #drop_area{
     width: 500px;
-    height: 300px;
+    height: 500px;
     padding: 30px;
     background-color: rgb(246, 246, 246);
     text-align: center;
@@ -78,6 +78,8 @@
     border-radius: 17px;
     border: 2px dashed #a8a8a8;
     background:color-mix(in hsl shorter hue, percentage, color percentage);
+    background-position: centre;
+    background-size: cover;
 }
 
 
