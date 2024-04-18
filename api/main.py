@@ -26,7 +26,7 @@ app.mount("/static1", StaticFiles(directory="frontend"), name="static1")
 app.mount("/static2", StaticFiles(directory="frontend/static"), name="static2")
 templates = Jinja2Templates(directory="frontend")
 
-@app.get("/")
+@app.get("/predict")
 async def home(request: Request):
     return templates.TemplateResponse("app.html", {"context": "data", "request": request})
 
@@ -35,12 +35,14 @@ async def ping():
     return f"pinged"
 
 @app.post("/predict")
-async def predict(image_file: UploadFile = File(...)):
-    image_bytes = await image_file.read()
-    image = Image.open(BytesIO(image_bytes))
+async def predict(image: UploadFile = File(...)):
+    # return {"image": "received"}
+    
+    image_bytes = await image.read()
+    image_open = Image.open(BytesIO(image_bytes))
 
     # Resize the image to 224x224 using TensorFlow
-    image_array = np.array(image)
+    image_array = np.array(image_open)
     resized_image = tf.image.resize(image_array, (224, 224))
 
     image_batch = np.expand_dims(resized_image, 0)
