@@ -26,7 +26,7 @@ app.mount("/static1", StaticFiles(directory="frontend"), name="static1")
 app.mount("/static2", StaticFiles(directory="frontend/static"), name="static2")
 templates = Jinja2Templates(directory="frontend")
 
-@app.get("/predict")
+@app.get("/")
 async def home(request: Request):
     return templates.TemplateResponse("app.html", {"context": "data", "request": request})
 
@@ -34,7 +34,7 @@ async def home(request: Request):
 async def ping():
     return f"pinged"
 
-@app.post("/predict")
+@app.post("/")
 async def predict(image: UploadFile = File(...)):
     # return {"image": "received"}
     

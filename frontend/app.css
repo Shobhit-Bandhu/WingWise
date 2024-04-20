@@ -24,12 +24,12 @@
 }
 
 #logo #wise {
-    font-size: 30px;
+    font-size: 33px;
     font-weight: bold;
     color: #8db9ff;
     font-family: 'Courier New', Courier, monospace;
-    padding-top: 1.5px;
-    padding-left: 1px;
+    padding-top: 0px;
+    padding-left: 2px;
 }
 
 #nav {
@@ -62,8 +62,8 @@
 }
 
 #drop_area{
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     padding: 30px;
     background-color: rgb(246, 246, 246);
     text-align: center;
@@ -84,47 +84,16 @@
 
 
 #img_view img{
-    width: 500px;
-    height: 500px;
+    width: 70%;    
+    height: 70%;
     padding: 25px;
 }
-/* 
-#predict_btn {
-    background-color: #4CAF50;
-    color: rgb(255, 0, 0);
-    border: none;
-    align-self: center;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-  }
-  
-#predict_btn:hover {
-    background-color: #3e8e41;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-  
-#predict_btn:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(2px);
-} */
 
 #result {
+    width: 97%;
     background-color: #f2f2f2;
-    padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 18;
     font-weight: bold;
-    text-align: center;
-    margin: 10px auto;
-    width: 50%;
+    padding: 10px;
 }

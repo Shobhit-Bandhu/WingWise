@@ -20,7 +20,7 @@ async function uploadImage() {
     formData.append("image", img);
 
     fetch(
-        "/predict",
+        "/",
         {
             method: "POST",
             body: formData
@@ -28,28 +28,17 @@ async function uploadImage() {
     ).then(
         response => response.json()
     ).then(data => {
-        const resultDiv = document.getElementById("result");
-        resultDiv.innerHTML = JSON.stringify(data, null, 2);
-    }).catch(
-        error => {
-            console.log(error);
-        }
-    )
-}
+        let str = "<div style=\"font-size: 25px; font-family: sans-serif; color: #3c3c3c;\">RESULTS</div><br> <div style=\"font-size: 13px; font-family: Verdana; color: #3c3c3c;\">";
 
-
-async function predict() {
-    fetch(
-        "/predict",
-        {
-            method: "POST",
-            body: formData
+        let i = 1;
+        for (const key in data){
+            str += `${i}. ${key}:  ${data[key]}%<br>`;
+            i+=1;
         }
-    ).then(
-        response => response.json()
-    ).then(data => {
-        const resultDiv = document.getElementById("result");
-        resultDiv.innerHTML = JSON.stringify(data, null, 2);
+
+        str += "</div>";
+
+        document.getElementById("result").innerHTML = str;
     }).catch(
         error => {
             console.log(error);
