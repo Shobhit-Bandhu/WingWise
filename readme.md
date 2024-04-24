@@ -19,5 +19,8 @@ git clone https://github.com/Shobhit-Bandhu/WingWise
 - To run the app, execute the following in terminal
 ```
 cd api
+pip install -r requirements.txt
 python main.py
 ```
+- Now run the frontend using:
+http://localhost:8000
