@@ -10,6 +10,13 @@ The model uses transfer learning a pre-trained model: MobileNetV3-Large to ident
 - Used MobileNetV3-Large for Transfer Learning model, attaining validation F1 score of 0.95xx
 - Model is trained on: https://www.kaggle.com/datasets/gpiosenka/butterfly-images40-species
 
+## Note
+We have made an assumption that uploaded image is indeed of a butterfly or moth. 
+
+This is simply a model to discern the species of a butterfly or moth.
+
+For further information on the trained species, refer to "saved_model/class_names.txt" 
+
 ## How to run
 
 - Clone the project using

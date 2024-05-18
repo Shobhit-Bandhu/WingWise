@@ -8,7 +8,7 @@ input_image.addEventListener("change", uploadImage);
 async function uploadImage() {
     let img_link = URL.createObjectURL(input_image.files[0]);
 
-
+ 
     img_view.style.backgroundImage = `url(${img_link})`;
     img_view.textContent=""
     img_view.style.border=0;

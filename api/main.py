@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
 
-trained_model = tf.keras.models.load_model("saved_model/trained_model.keras")
+trained_model = tf.keras.models.load_model("saved_model/trained_model_mobilenetV3.keras")
 
 # Import classes
 filename = "saved_model/class_names.txt"
@@ -18,7 +18,7 @@ class_names = []
 with open(filename, "r") as file:
   lines = file.readlines()
 
-  for line in lines:
+  for line in lines: 
     class_names.append(line.rstrip("\n"))
 
 app = FastAPI()
