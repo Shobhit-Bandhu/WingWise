@@ -1,4 +1,4 @@
-'''python
+```
 import os
 
 # Define the filename of your .txt file containing class names
@@ -18,4 +18,4 @@ with open(filename, "r") as file:
 
 # Print the imported class names
 print(class_names)
-'''
+```
